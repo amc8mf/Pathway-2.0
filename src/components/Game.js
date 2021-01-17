@@ -31,7 +31,7 @@ function Game () {
   return (
     <div>
       <h1>Game Component</h1>
-      <GameBoard wallPositions={gameDetails.wallPositions}/>
+      <GameBoard wallPositions={gameDetails.wallPositions} playerPositions={gameDetails.playerPositions}/>
       <ul>
        {Object.keys(gameDetails).map(item => <li>{item +':'  + JSON.stringify(gameDetails[item])}</li>)}
       </ul>

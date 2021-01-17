@@ -14,30 +14,43 @@ body {
   font-size: 24px;
   font-weight: bold;
   height: 70px;
-  margin-right: 25px;
+  /*margin-right: 25px;*/
   margin-top: -1px;
   padding: 0;
   text-align: center;
   width: 70px;
 }
 
-.wall-button {
+.wall-vertical {
   background: #fff;
   border: 1px solid #999;
   float: left;
-  font-size: 24px;  
+  font-size: 24px;
   font-weight: bold;
-  line-height: 34px;
-  height: 25px;
-  margin-right: 70px;
+  height: 70px;
+  /*margin-right: 25px;*/
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 25px;
+  width: 20px;
+}
+
+.wall-horizontal {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  height: 20px;
+  margin-right: 20px;
+  /*margin-top: -1px;*/
+  padding: 0;
+  text-align: center;
+  width: 70px;
 }
 
 .first-col-board-tile {
-  margin-left: 25px;
+  /*margin-left: 25px;*/
 }
 
 .circle {

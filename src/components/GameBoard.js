@@ -1,16 +1,12 @@
 import React, { useContext } from "react";
 import BoardTile from "./BoardTile";
-import WallEdge from "./WallEdge"
+import Wall from "./Wall"
 
 class GameBoard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
 
-    }
     this.createBoardRow = this.createBoardRow.bind(this);
-    this.createWallButtonRow = this.createWallButtonRow.bind(this);
-
     this.createBoardRows = this.createBoardRows.bind(this);
   }
 
@@ -18,36 +14,48 @@ class GameBoard extends React.Component {
     let tiles = [];
     for (var i=1; i<=9; i++) {
       let id = colVal + i;
-      if (i == 1) {
-        tiles.push(<BoardTile id={id} firstCol={true} value={id} />);
-      } else if (id== 'I5'){
-        tiles.push(<BoardTile id={id} occupied="P1" value={id} />);
-      } else if (id== 'A5'){
-        tiles.push(<BoardTile id={id} occupied="P2" value={id} />);
+      let player1Position =  'A5';
+      let player2Position =  'I5';
+      if (this.props.playerPositions) {
+        player1Position = this.props.playerPositions[0]['Player1'] || 'A5';
+        player2Position = this.props.playerPositions[1]['Player2'] || 'I5';
+      }
+      let firstCol = i == 1 ? true : false;
+      if (id == player1Position){
+        tiles.push(<BoardTile id={id} firstCol={firstCol} occupied="P1" value={id} />);
+      } else if (id== player2Position){
+        tiles.push(<BoardTile id={id} firstCol={firstCol} occupied="P2" value={id} />);
       } else {
-        tiles.push(<BoardTile id={id} value={id} />);
+        tiles.push(<BoardTile id={id} firstCol={firstCol} value={id} />);
+      }
+      if (i != 9) {
+        tiles.push(<Wall type="vertical"/>)       
       }
     }
     return tiles;
-  }
-
-  createWallButtonRow(colVal) {
-    let buttons = [];
-    for (var j=1; j<=10; j++) {
-      buttons.push(<WallEdge value={colVal +j} />);        
-    }
-    return buttons;
   }
 
   createBoardRows() {
     const colVals = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
     let rows = [];
     for (var x=0; x<=8; x++) {
-      if (x == 0) {
-       rows.push(<div className="board-row">{this.createWallButtonRow('AA')}</div>);       
-      }
       rows.push(<div className="board-row">{this.createBoardRow(colVals[x])}</div>);
-      rows.push(<div className="board-row">{this.createWallButtonRow(colVals[x])}</div>);
+      if (x != 8) {
+        rows.push(
+          <div className="board-row">
+            <Wall type="horizontal" />
+            <Wall type="horizontal" />
+            <Wall type="horizontal" />
+            <Wall type="horizontal" />
+            <Wall type="horizontal" />
+            <Wall type="horizontal" />
+            <Wall type="horizontal" />
+            <Wall type="horizontal" />
+            <Wall type="horizontal" />
+          </div>
+        );      
+      }
+
     }
     return rows;
   }

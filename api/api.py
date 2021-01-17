@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/gameDetails')
 def get_game_details():
     return {
-      'playerPositions' : [ {'Player1' : ''}, {'Player2' : ''}],
+      'playerPositions' : [ {'Player1' : 'B6'}, {'Player2' : 'A9'}],
       'wallPositions' : [],
       'currentTurn' : '',
       'currentWallEdges' : [],

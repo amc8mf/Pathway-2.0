@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 
-const Wall = () => {
+const Wall = (props) => {
+  console.log(props)
+  const tmpClass = props.type == 'vertical' ? 'wall-vertical' : 'wall-horizontal';
   return (
-    <div>
-      <h1>Wall Component</h1>
-    </div>
+    <button className={tmpClass} onClick={function() { alert('click'); }}>
+    </button>
   );
 };
 
